@@ -1,0 +1,27 @@
+// IR Sensor with LED Control
+// When an object is detected by the IR sensor,
+// the LED turns ON, otherwise it stays OFF.
+
+// Pin definitions
+const int LED_PIN = 6;
+const int IR_SENSOR_PIN = 7;
+
+int sensorState = 0;
+
+void setup() {
+  // Set pin modes
+  pinMode(LED_PIN, OUTPUT);
+  pinMode(IR_SENSOR_PIN, INPUT);
+}
+
+void loop() {
+  // Read IR sensor value
+  sensorState = digitalRead(IR_SENSOR_PIN);
+
+  // Check if object is detected
+  if (sensorState == LOW) {   // LOW means object detected (common IR modules)
+    digitalWrite(LED_PIN, HIGH);
+  } else {
+    digitalWrite(LED_PIN, LOW);
+  }
+}
